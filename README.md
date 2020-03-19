@@ -2,6 +2,11 @@
 
 [![CircleCI](https://circleci.com/gh/nagajaga/SudokuSolver.svg?style=svg)](https://circleci.com/gh/nagajaga/SudokuSolver)
 
+
+[![codecov](https://codecov.io/gh/nagajaga/SudokuSolver/branch/master/graph/badge.svg)](https://codecov.io/gh/nagajaga/SudokuSolver)
+
+
+
 [Määrittelydokumentti](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/M%C3%A4%C3%A4rittelydokumentti.md)
 
 ## Viikkoraportit
