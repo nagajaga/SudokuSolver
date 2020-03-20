@@ -12,3 +12,5 @@
 ## Viikkoraportit
 
 [Viikko1](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/viikkoraportti_1.md)
+
+[Viikko2](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/viikkoraportti_2.md)
