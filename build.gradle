@@ -1,13 +1,17 @@
+plugins {
+    id 'checkstyle'
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'jacoco'
 
-mainClassName = 'Main'
+mainClassName = 'main.Main'
 
 
 jar {
     manifest {
-        attributes 'Main-Class': 'Main'
+        attributes 'Main-Class': 'main.Main'
     }
 }
 
@@ -37,4 +41,5 @@ jacocoTestReport {
     }
     
 }
+
 
