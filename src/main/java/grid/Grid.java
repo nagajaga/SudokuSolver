@@ -19,4 +19,12 @@ public class Grid{
         return output;
     }
 
+    public void set(int x, int y, int value){
+        this.grid[x][y] = value;
+    }
+
+    public int get(int x, int y) {
+        return this.grid[x][y];
+    }
+
 }
