@@ -16,3 +16,5 @@
 [Viikko2](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/viikkoraportti_2.md)
 
 [Viikko3](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/viikkoraportti_3.md)
+
+[Viikko4](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/viikkoraportti_4.md)
