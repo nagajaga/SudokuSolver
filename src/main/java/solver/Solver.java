@@ -32,4 +32,8 @@ public class Solver {
         }
         return true;
     }
+
+    public void solveLogically(){
+        this.grid.solve();
+    }
 }

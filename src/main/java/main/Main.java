@@ -24,7 +24,7 @@ public class Main {
         System.out.print(grid);
         System.out.println();
         long timer = System.currentTimeMillis();
-        solver.solveRecursively();
+        solver.solveLogically();
         System.out.println("Tämän sudokun ratkominen kesti: " + (System.currentTimeMillis() - timer) +" milisekuntia.");
         System.out.println();
         System.out.print(grid);
