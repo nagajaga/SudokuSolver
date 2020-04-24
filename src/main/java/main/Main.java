@@ -6,29 +6,137 @@ import grid.Grid;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        //vaikea sudoku esimerkkinä
-        int[][] grid1 = {
-            {0,0,1,0,4,0,6,0,0},
-			{0,0,0,0,0,1,0,0,0},
-			{0,8,7,0,0,6,2,0,0},
-			{0,1,0,7,0,0,0,0,2},
-			{0,5,0,8,0,2,0,3,0},
-			{8,0,0,0,0,4,0,9,0},
-			{0,0,2,3,0,0,1,8,0},
-			{0,0,0,1,0,0,0,0,0},
-			{0,0,8,0,2,0,7,0,0},
-        };
-        Grid grid = new Grid(grid1);
+        System.out.println("Easy sudoku");
+        System.out.println();
+        int[][] easy = easyGrid();
+        solvePrint(easy);
+        compareSolvers(easy);
+        System.out.println();
+        System.out.println("Medium sudoku");
+        System.out.println();
+        int[][] medium = mediumGrid();
+        solvePrint(medium);
+        compareSolvers(medium);
+        System.out.println();
+        System.out.println("Hard sudoku");
+        System.out.println();
+        int[][] hard = hardGrid();
+        solvePrint(hard);
+        compareSolvers(hard);
+        System.out.println();
+
+    }
+
+    public static void compareSolvers(int[][] difficulty) {
+        System.out.println("Average solve time from 1000 solves using logical solver: " +testN(1000,"logical", difficulty) + " milliseconds");
+        System.out.println("Average solve time from 1000 solves using recursive backtracking solver: " +testN(1000,"recursive", difficulty) + " milliseconds");
+
+    }
+
+    public static Long logicalSolveTime(int[][] difficulty) {
+        int[][] given = difficulty;
+        int[][] copy = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                copy[i][j] = given[i][j];
+            }
+        }
+        Grid grid = new Grid(copy);
         Solver solver = new Solver(grid);
-        System.out.print(grid);
-        System.out.println();
-        long timer = System.currentTimeMillis();
+        Long start = System.currentTimeMillis();
         solver.solveLogically();
-        System.out.println("Tämän sudokun ratkominen kesti: " + (System.currentTimeMillis() - timer) +" milisekuntia.");
+        Long done = System.currentTimeMillis() - start;
+        return done;
+    }
+
+    public static Long recursiveSolveTime(int[][] difficulty) {
+        int[][] given = difficulty;
+        int[][] copy = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                copy[i][j] = given[i][j];
+            }
+        }
+        Grid grid = new Grid(copy);
+        Solver solver = new Solver(grid);
+        Long start = System.currentTimeMillis();
+        solver.solveRecursively();
+        Long done = System.currentTimeMillis() - start;
+        return done;
+    }
+
+    public static Double testN(int n, String solverType, int[][] difficulty) {
+        if (solverType.equals("logical")) {
+            Long logicalTime = 0L;
+            for (int i = 0; i < n; i++) {
+                logicalTime += logicalSolveTime(difficulty);
+            }
+            Double averageLogical = logicalTime.doubleValue() / n;
+            return averageLogical;
+        } else {
+            Long recursiveTime = 0L;
+            for (int i = 0; i < n; i++) {
+                recursiveTime += recursiveSolveTime(difficulty);
+            }
+            Double averageRecursive = recursiveTime.doubleValue() / n;
+            return averageRecursive;
+        }
+
+    }
+
+    public static void solvePrint(int[][] difficulty) {
+        int[][] given = difficulty;
+        int[][] copy = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                copy[i][j] = given[i][j];
+            }
+        }
+        Grid grid = new Grid(copy);
+        Solver solver = new Solver(grid);
+        System.out.println("Sudoku to solve");
         System.out.println();
-        System.out.print(grid);
-        
+        System.out.println(grid);
+        System.out.println();
+        solver.solveLogically();
+        System.out.println("Solved sudoku");
+        System.out.println();
+        System.out.println(grid);
+    }
+
+    public static int[][] easyGrid() {
+        int[][] easy = {{ 0, 3, 1, 0, 0, 0, 0, 0, 6},
+                        { 0, 4, 9, 2, 0, 0, 0, 3, 8},
+                        { 0, 2, 0, 0, 1, 0, 0, 4, 5},
+                        { 7, 5, 0, 0, 0, 6, 0, 0, 0},
+                        { 2, 0, 8, 0, 0, 5, 6, 0, 0},
+                        { 0, 9, 6, 0, 3, 2, 7, 5, 0},
+                        { 0, 6, 2, 0, 7, 0, 0, 0, 4},
+                        { 0, 0, 5, 0, 0, 9, 3, 0, 7},
+                        { 0, 7, 0, 5, 6, 1, 0, 2, 0}
+    };
+        return easy;
+    }
+
+    public static int[][] mediumGrid() {
+        int[][] medium = {{ 4, 0, 0, 0, 0, 3, 1, 5, 0},
+                          { 0, 0, 0, 4, 0, 0, 0, 0, 0},
+                          { 5, 0, 0, 9, 2, 0, 0, 0, 7},
+                          { 0, 0, 4, 6, 0, 0, 0, 0, 3},
+                          { 2, 5, 7, 0, 0, 1, 0, 0, 0},
+                          { 0, 0, 3, 0, 0, 0, 0, 0, 2},
+                          { 0, 0, 2, 0, 0, 7, 0, 6, 9},
+                          { 7, 0, 0, 0, 0, 6, 2, 0, 1},
+                          { 1, 9, 0, 0, 0, 0, 0, 3, 5}
+    };
+        return medium;
+    }
+
+    public static int[][] hardGrid() {
+        int[][] hard = { { 0, 0, 1, 0, 4, 0, 6, 0, 0 }, { 0, 0, 0, 0, 0, 1, 0, 0, 0 }, { 0, 8, 7, 0, 0, 6, 2, 0, 0 },
+                { 0, 1, 0, 7, 0, 0, 0, 0, 2 }, { 0, 5, 0, 8, 0, 2, 0, 3, 0 }, { 8, 0, 0, 0, 0, 4, 0, 9, 0 },
+                { 0, 0, 2, 3, 0, 0, 1, 8, 0 }, { 0, 0, 0, 1, 0, 0, 0, 0, 0 }, { 0, 0, 8, 0, 2, 0, 7, 0, 0 }, };
+        return hard;
     }
 
 }
