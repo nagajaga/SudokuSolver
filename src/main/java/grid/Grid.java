@@ -20,6 +20,31 @@ public class Grid {
         return output;
     }
 
+    public void tulosta(){
+        String output = " ______________________\n";
+        for (int i = 0; i < 9; i++){
+            for (int j = 0; j < 9 ; j++) {
+                if (i == 3 && j == 0|| i == 6 && j == 0) {
+                    output+= "|----------------------|\n";
+                }
+                if(j == 0) {
+                    output += "|";
+                }
+                
+                output +=  (grid[i][j] + " ");
+                if (j % 3 == 2) {
+                    output += "| ";
+                }
+                if (j == 8) {
+                    output += ("\n");
+                    
+                }
+            }
+        }
+        output += "|______________________|\n";
+        System.out.print(output);
+    }
+
     public void set(int x, int y, int value) {
         this.grid[x][y] = value;
     }
