@@ -13,7 +13,7 @@
 
 [Testausdokumentti](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/Testausdokumentti.md)
 
-[Käyttöohje](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/Testausdokumentti.md)
+[Käyttöohje](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/K%C3%A4ytt%C3%B6ohje.md)
 
 
 ## Viikkoraportit
