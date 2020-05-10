@@ -1,5 +1,8 @@
 package grid;
 
+/**
+ * A class with methods that determine the state of the sudoku.
+ */
 public class Grid {
     private int[][] grid;
 
@@ -7,6 +10,9 @@ public class Grid {
         this.grid = grid;
     }
 
+    /**
+     * Prints the sudoku.
+     */
     public String toString() {
         String output = "";
         for (int i = 0; i < 9; i++) {
@@ -19,7 +25,9 @@ public class Grid {
         }
         return output;
     }
-
+    /**
+     * Prints the sudoku.
+     */
     public void tulosta(){
         String output = " ______________________\n";
         for (int i = 0; i < 9; i++){
@@ -53,6 +61,12 @@ public class Grid {
         return this.grid[x][y];
     }
 
+    /**
+     * Checks if value is in row.
+     * @param rivi Row.
+     * @param arvo Value.
+     * @return Returns true if value is in row.
+     */
     public boolean onRivissa(int rivi, int arvo) {
         // iteroidaan rivin läpi ja palautetaan true jos arvo on jo rivissä
         for (int i = 0; i < 9; i++) {
@@ -63,6 +77,12 @@ public class Grid {
         return false;
     }
 
+    /**
+     * Checks if value is in column.
+     * @param sarake Column.
+     * @param arvo Value.
+     * @return Returns true if value is in column.
+     */
     public boolean onSarakkeessa(int sarake, int arvo) {
         // iteroidaan sarakkeen läpi ja palautetaan true jos arvo on jo sarakkeessa
         for (int i = 0; i < 9; i++) {
@@ -73,6 +93,13 @@ public class Grid {
         return false;
     }
 
+    /**
+     * Checks if value is in box.
+     * @param rivi Row.
+     * @param sarake Column.
+     * @param arvo Value.
+     * @return Returns true if value is in box.
+     */
     public boolean onLaatikossa(int rivi, int sarake, int arvo) {
         // iteroidaan laatikon läpi ja palautetaan true jos arvo on jo laatikossa
         int laatikkoRivi = rivi - rivi % 3;
@@ -88,9 +115,14 @@ public class Grid {
         return false;
     }
 
+    /**
+     * Checks if a value is in the row, column or box.
+     * @param rivi Row.
+     * @param sarake Column.
+     * @param arvo Value.
+     * @return Returns true if value is not in row, column or box.
+     */
     public boolean onSallittu(int rivi, int sarake, int arvo) {
-        // tarkistetaan onko arvo rivissä, sarakkeessa tai laatikossa, jos ei ole, niin
-        // arvo on sallittu
         if (!onRivissa(rivi, arvo) && !onSarakkeessa(sarake, arvo) && !onLaatikossa(rivi, sarake, arvo)) {
             return true;
         }
@@ -120,8 +152,12 @@ public class Grid {
             return 6;
         }
     }
-
-    // pidetään kirjalla mitkä arvot ovat mahdollisia mihinkin soluun
+    /**
+     * Keeps track of possible candidates for a cell.
+     * @param rivi Row.
+     * @param sarake Column.
+     * @return Returns a box.
+     */
     public boolean[] mahdolliset(int rivi, int sarake) {
         boolean[] laatikko = new boolean[10];
         if (this.grid[rivi][sarake] != 0) {
@@ -158,7 +194,10 @@ public class Grid {
     }
 
 
-    // palauttaa true jos ratkaistu
+    /**
+     * A method that checks if solved.
+     * @return Returns true if solved.
+     */
     public boolean ratkaistu() {
         for(int i = 0; i < 9; i++) {
             for(int j = 0; j < 9; j++) {
@@ -170,14 +209,17 @@ public class Grid {
         return true;
 
     }
-
-    // yritetään ratkaista löytämällä yhdenmahdolliset ja ainoatmahdolliset
+    /**
+     * Tries to solve the sudoku by using the methods yhdenMahdolliset and ainoatMahdolliset.
+     */
     public void solve() {
         while (!ratkaistu() && (yhdenMahdolliset() || ainoatMahdolliset())) {
         }
     }
-
-    // etsitään solut johon on vain yksi mahdollinen arvo jäljellä
+    /**
+     * Finds cells where there is only 1 possible option.
+     * @return Returns true or false.
+     */
     public boolean yhdenMahdolliset() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -200,8 +242,10 @@ public class Grid {
         }
         return false;
     }
-
-    // etsitään solut jotka ovat ainoat mahdolliset rivissä, sarakkeessa tai laatikossa kyseiselle arvolle
+    /**
+     * Checks for the only possible values to a row, column or box.
+     * @return Returns true or false.
+     */
     public boolean ainoatMahdolliset() {
         for (int i = 0; i < this.grid.length; i++) {
             for (int j = 0; j < this.grid[i].length; j++) {
@@ -217,7 +261,13 @@ public class Grid {
         }
         return false;
     }
-
+    /**
+     * Calculates the only possible values for a cell.
+     * @param kopio A copy of the table.
+     * @param i X coordinate.
+     * @param j Y coordinate
+     * @return Returns true or false.
+     */
     public boolean laskeAinoatMahdolliset(boolean[] kopio, int i, int j) {
         int laskin = 0;
         int koe = 0;
@@ -234,7 +284,13 @@ public class Grid {
         return false;
     }
 
-    // tarkistetaan rivi vertaamalla arvoja
+    /**
+     * A method that checks a row and compares values.
+     * @param vertaa Boolean array for comparing.
+     * @param i X coordinate.
+     * @param j Y coordinate.
+     * @return Returns true or false.
+     */
     public boolean tarkistaRivi(boolean[] vertaa, int i, int j) {
         boolean[] kopio = new boolean[10];
         boolean[] verrattava;
@@ -265,7 +321,13 @@ public class Grid {
         return laskeAinoatMahdolliset(kopio, i, j);
     }
 
-    // tarkistetaan sarake vertaamalla arvoja
+    /**
+     * A method that checks a column and compares values.
+     * @param vertaa Boolean array for comparing.
+     * @param i X coordinate.
+     * @param j Y coordinate.
+     * @return Returns true or false.
+     */
     public boolean tarkistaSarake(boolean[] vertaa, int i, int j) {
         boolean[] kopio = new boolean[10];
         boolean[] verrattava;
@@ -296,7 +358,13 @@ public class Grid {
         return laskeAinoatMahdolliset(kopio, i, j);
     }
 
-    // tarkistetaan laatikko vertaamalla arvoja
+    /**
+     * A method that checks a box and compares values.
+     * @param vertaa Boolean array for comparing.
+     * @param i X coordinate.
+     * @param j Y coordinate.
+     * @return Returns true or false.
+     */
     public boolean tarkistaLaatikko(boolean[] vertaa, int i, int j) {
         if (this.grid[i][j] != 0) {
             return false;

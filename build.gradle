@@ -9,6 +9,10 @@ apply plugin: 'jacoco'
 mainClassName = 'main.Main'
 
 
+task myJavadocs(type: Javadoc) {
+   source = sourceSets.main.allJava
+}
+
 jar {
     manifest {
         attributes 'Main-Class': 'main.Main'

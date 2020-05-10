@@ -1,13 +1,19 @@
 package solver;
 
 import grid.Grid;
-
+/**
+ * A class that implements solving algorithms.
+ */
 public class Solver {
     private Grid grid;
     
     public Solver(Grid grid) {
         this.grid = grid;
     }
+    /**
+     * A method that uses recursive backtracking to solve a sudoku.
+     * @return Returns a boolean value true when solved.
+     */
     public boolean solveRecursively(){
         for(int rivi = 0; rivi < 9; rivi++) {
             for(int sarake = 0; sarake < 9; sarake++){
@@ -33,6 +39,9 @@ public class Solver {
         return true;
     }
 
+    /**
+     * A method that solves a sudoku logically, using methods in Grid class.
+     */
     public void solveLogically(){
         this.grid.solve();
     }

@@ -1,9 +1,6 @@
 package main;
 
 import java.util.*;
-
-import javax.sound.sampled.SourceDataLine;
-
 import solver.Solver;
 import grid.Grid;
 
