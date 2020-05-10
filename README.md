@@ -13,6 +13,7 @@
 
 [Testausdokumentti](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/Testausdokumentti.md)
 
+[Käyttöohje](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/Testausdokumentti.md)
 
 
 ## Viikkoraportit
@@ -28,3 +29,5 @@
 [Viikko5](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/viikkoraportti_5.md)
 
 [Viikko6](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/viikkoraportti_6.md)
+
+[Viikko7](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/viikkoraportti_7.md)
