@@ -11,7 +11,7 @@ GridTest.java testaa grid tietorakenteen toimintaa. Get ja set metodien toiminta
 
 SolverTest.java testaa solver luokan toimintaa. Ohjelmalle syötetään sudoku ja jos solverin metodi solveRecursively palauttaa boolean arvon tosi, se on onnistunut ratkaisemaan sudokun. Luokan rivikattavuus on 100%.
 
-## Suorituskykytestaus
+# Suorituskykytestaus
 
 Suorituskykyä on testattu ratkaisemalla jokaisen eri vaikeustason sudoku 1000 kertaa käyttäen molempia algoritmejä.
 
