@@ -15,6 +15,7 @@
 
 [Käyttöohje](https://github.com/nagajaga/SudokuSolver/blob/master/documentation/K%C3%A4ytt%C3%B6ohje.md)
 
+[Release](https://github.com/nagajaga/SudokuSolver/releases/tag/Final)
 
 ## Viikkoraportit
 
